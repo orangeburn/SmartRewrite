@@ -1,4 +1,4 @@
 interface:
   display_name: "文章转口播稿"
-  short_description: "保留原文，只处理口播中的指代、连接与听觉负担"
-  default_prompt: "使用 $article-to-spoken-script 将这篇文章保守转写成适合直接朗读的口播稿。默认保留原文，只修改听觉理解所必需的部分。"
+  short_description: "忠实保留内容，按听觉理解重排文章"
+  default_prompt: "使用 $article-to-spoken-script 将这篇文章转写成适合直接朗读的口播稿。忠实保留原文事实、观点、判断和作者声音，根据听觉理解的依赖关系重新排列原文已有内容，不添加新事实、新案例或新结论。"
