@@ -1,4 +1,4 @@
 interface:
   display_name: "文章转口播稿"
-  short_description: "中文文章口播化，适用于播客、旁白、朗读及 TTS"
-  default_prompt: "使用 $article-to-spoken-script 将这篇文章改写成适合直接朗读的口播稿。"
+  short_description: "保留原文，只处理口播中的指代、连接与听觉负担"
+  default_prompt: "使用 $article-to-spoken-script 将这篇文章保守转写成适合直接朗读的口播稿。默认保留原文，只修改听觉理解所必需的部分。"
