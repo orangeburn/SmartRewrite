@@ -1,14 +1,33 @@
 # SmartRewrite
 
-SmartRewrite 用来把已经写好的中文文章，重建成适合播客、旁白、人工朗读和 TTS 的口播稿。
+SmartRewrite 是一个以正式文章为原始母稿、面向不同使用场景进行独立转写的文稿重建框架。
+
+同一篇文章可以根据不同交付场景生成不同 Renderer 的文稿。每个 Renderer 负责解决自己的表达问题，但共享同一份原始内容来源。
+
+## 总纲
+
+**任何场景转写都必须回到原始母稿，不允许以其他 Renderer 的输出作为输入源。**
+
+所有 Renderer 都直接读取原始母稿，并彼此平级：
+
+```text
+原始母稿
+├── TTS / 口播 Renderer
+├── Speech Renderer
+└── 其他场景 Renderer
+```
+
+Renderer 可以改变表达方式、信息顺序和交付形态，但不能把另一个 Renderer 已经加工过的文稿继续作为转写源。
+
+这样可以避免前一轮转写中的删减、重排、语言替换和场景适配继续传递到下一轮，保证每一种场景文稿都能直接回溯到原始母稿。
+
+## article-to-spoken-script
+
+`article-to-spoken-script` 是仓库中当前已经实现的文章转口播 Skill。
 
 文章和口播是两种不同的媒介。文章允许读者停下来、回看、跳读标题，也可以依赖段落、加粗和上下文寻找前文。口播只能沿时间向前。听众听到一句话时，如果理解它所需的前提还没出现，或者“这、它、这个问题”需要回头查找，理解就会中断。
 
 SmartRewrite 会重新组织原文已有的信息，再处理聊天结构、口语句法和朗读问题。事实、观点、概念边界、判断强度和作者声音保持不变。
-
-## article-to-spoken-script
-
-`article-to-spoken-script` 是仓库中的文章转口播 Skill。
 
 完整规则见 [`article-to-spoken-script/SKILL.md`](./article-to-spoken-script/SKILL.md)。
 
