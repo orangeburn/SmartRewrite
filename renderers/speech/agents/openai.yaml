@@ -1,0 +1,4 @@
+interface:
+  display_name: "Speech Renderer"
+  short_description: "把正式文章重建为可直接用提词器表达的真人演讲稿"
+  default_prompt: "使用 $speech-renderer 将这篇原始母稿转写为适合真人表达和提词器使用的 Speech 稿。遵守 SmartRewrite Core，以最小充分表达单元组织连续演讲路径，保留原文事实、观点、关系、判断强度和核心概念。默认只输出成稿。"
