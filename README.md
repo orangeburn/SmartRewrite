@@ -21,15 +21,13 @@ SmartRewrite 是一个以正式文章为原始母稿、面向不同使用场景�
 
 SmartRewrite 分为两层：
 
-1. **Core**：定义所有 Renderer 共用的内容边界、忠实原则和输入约束。
+1. **Core**：定义所有 Renderer 共用的内容来源、Fidelity Contract、概念锚词、内容单元、依赖关系和回溯验收。
 2. **Renderers**：根据具体使用场景，独立完成文稿重建。
 
 当前 Renderer：
 
 - **TTS Renderer**：把正式文章转写为适合连续收听、人工朗读和 TTS 的完整口播稿。
-- **Speech Renderer**：面向真人演讲场景。规则正在定义中。
-
-未来可以继续扩展其他 Renderer，但都必须遵守同一套 Core 约束。
+- **Speech Renderer**：把正式文章重建为适合真人演讲、播客录制和提词器使用的 Speech 稿。
 
 ## 目录结构
 
@@ -45,42 +43,34 @@ SmartRewrite/
     │   ├── references/
     │   └── agents/
     └── speech/
-        └── README.md
+        ├── README.md
+        ├── SKILL.md
+        └── agents/
 ```
 
 ## Core
 
-`core/principles.md` 存放所有 Renderer 共用的总纲和内容边界。
-
-Renderer 不得自行覆盖 Core 规则。场景规则只处理该场景如何表达，不重新定义母稿、忠实对象或跨 Renderer 的关系。
+`core/principles.md` 定义所有 Renderer 共用的总纲、内容边界、重建基础和回溯标准。
 
 ## TTS Renderer
 
-现有 `article-to-spoken-script` 能力迁移为 `renderers/tts`。
+TTS Renderer 的目标是：**表达已经完成，声音负责执行。**
 
-它负责把正式文章重建成适合播客、旁白、人工朗读或 TTS 的完整口播稿，重点处理：
-
-- Content Fidelity
-- Conversational Reconstruction
-- Spoken Syntax Reconstruction
-- Audio Delivery
+它重点处理完整口播措辞、聊天式重建、口语句法和 Audio Delivery。
 
 完整规则见 [`renderers/tts/SKILL.md`](./renderers/tts/SKILL.md)。
 
 ## Speech Renderer
 
-`renderers/speech` 用于开发真人演讲场景的转写规则。
+Speech Renderer 的目标是：**信息已经完成，真人负责最后表达。**
 
-当前已确定的形态是：
+它把 Core 内容重建为一条由最小充分表达单元组成的连续演讲路径，最终文稿可以直接进入提词器使用，同时允许演讲者自然改变措辞、语序和局部连接。
 
-- 可直接进入提词器使用；
-- 每个表达单元包含必要信息；
-- 不依赖临场组织大段内容；
-- 具体规则继续独立定义。
+完整规则见 [`renderers/speech/SKILL.md`](./renderers/speech/SKILL.md)。
 
 ## 使用方式
 
-调用时应同时提供：
+调用时提供：
 
 - 原始母稿完整正文；
 - 目标 Renderer；
