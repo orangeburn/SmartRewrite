@@ -1,4 +1,4 @@
 interface:
   display_name: "Speech Renderer"
-  short_description: "把正式文章重建为可直接用提词器表达的真人演讲稿"
-  default_prompt: "使用 $speech-renderer 将这篇原始母稿转写为适合真人表达和提词器使用的 Speech 稿。遵守 SmartRewrite Core，以最小充分表达单元组织连续演讲路径，保留原文事实、观点、关系、判断强度和核心概念。默认只输出成稿。"
+  short_description: "把正式文章重建为适合提词器或上台演讲的真人 Speech 稿"
+  default_prompt: "使用 $speech-renderer 将这篇原始母稿转写为适合真人表达的 Speech 稿。遵守 SmartRewrite Core，先建立演讲路径和最小充分表达单元，再根据用户场景选择模式。用户未指定时默认使用 Teleprompter Mode；明确要求上台演讲、拿稿演讲、较大自由演绎空间或‘用眼睛演讲’时使用 Stage Mode。所有模式都必须执行双向语义覆盖检查。默认只输出成稿。"
